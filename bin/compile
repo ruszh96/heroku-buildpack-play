@@ -82,6 +82,9 @@ fi
 echo "-----> Building Play! application..."
 $PLAY_PATH/play version | sed -u 's/^/       /'
 
+# Resolving maven dependecies
+play mvn:re
+
 # Precompile the Play! application at the root of $BUILD_DIR
 APP_DIR=./
 echo "       Building Play! application at directory $APP_DIR"
