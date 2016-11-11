@@ -93,7 +93,8 @@ eval "$DEPENDENCIES_CMD" | sed -u 's/^/       /'
 check_compile_status
 
 # Resolving maven dependecies
-play mvn:re
+echo "-----> Resolving maven dependencies..."
+$PLAY_PATH/play mvn:re
 
 
 PRECOMPILE_CMD="$PLAY_PATH/play precompile $APP_DIR --silent 2>&1"
