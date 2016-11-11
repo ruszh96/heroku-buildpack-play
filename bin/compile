@@ -82,8 +82,6 @@ fi
 echo "-----> Building Play! application..."
 $PLAY_PATH/play version | sed -u 's/^/       /'
 
-# Resolving maven dependecies
-play mvn:re
 
 # Precompile the Play! application at the root of $BUILD_DIR
 APP_DIR=./
@@ -93,6 +91,10 @@ DEPENDENCIES_CMD="$PLAY_PATH/play dependencies $APP_DIR --forProd --forceCopy --
 echo "       Resolving dependencies: $DEPENDENCIES_CMD"
 eval "$DEPENDENCIES_CMD" | sed -u 's/^/       /'
 check_compile_status
+
+# Resolving maven dependecies
+play mvn:re
+
 
 PRECOMPILE_CMD="$PLAY_PATH/play precompile $APP_DIR --silent 2>&1"
 echo "       Precompiling: $PRECOMPILE_CMD"
